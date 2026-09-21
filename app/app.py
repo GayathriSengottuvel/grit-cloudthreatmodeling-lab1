@@ -1,5 +1,6 @@
 import os
 import subprocess
+from uuid import uuid4
 
 from flask import Flask, jsonify, request
 
@@ -18,6 +19,11 @@ def home():
 @app.get("/health")
 def health():
     return jsonify(status="ok")
+
+
+@app.get("/uuid")
+def generate_uuid():
+    return jsonify(uuid=str(uuid4()))
 
 
 @app.get("/run-check")
